@@ -1,23 +1,21 @@
 NAME = push_swap
 
-CC = @cc
-CFLAGS = -Wall -Wextra -Werror -g
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g 
 
-SRC = main.c
+SRC =	main.c
 
-# Paths
-LIB_FOLDER = printf
-INCLUDE_FOLDERS = -I include -I $(LIB_FOLDER)
-
+includefolder = include
+libdir = libft
+libname = libft.a
+LIBFT = $(libdir)/$(libname)
+INCLUDES = -I $(includefolder) -I $(libdir)
 OBJ_DIR = obj
 SRCS = $(addprefix src/, $(SRC))
 OBJS = $(patsubst src/%, $(OBJ_DIR)/%, $(SRCS:%.c=%.o))
 
-# Library Files
-LIB_SRCS = $(wildcard $(LIB_FOLDER)/*.c)
-LIB_OBJS = $(patsubst $(LIB_FOLDER)/%.c, $(OBJ_DIR)/$(LIB_FOLDER)/%, $(LIB_SRCS:%.c=%.o))
-
 # Reset
+
 Color_Off='\033[0m'       # Text Reset
 
 IRed='\033[0;91m'         # Red
@@ -31,24 +29,24 @@ MSG3 = @echo ${ICyan}"Cleaned ${NAME} Successfully ✔︎"${Color_Off}
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_OBJS)
-	@$(CC) $(CFLAGS) $(INCLUDE_FOLDERS) $^ -o $(NAME)
+$(LIBFT):
+	@make -s -C $(libdir)
+
+$(NAME): $(LIBFT) $(OBJS)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(LIBFT) -L $(libdir) -lft -o $(NAME)
 	$(MSG1)
 
-$(OBJ_DIR)/%.o: src/%.c
+$(OBJ_DIR)/%.o: $(SRCS)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDE_FOLDERS) -o $@ -c $<
-
-$(OBJ_DIR)/$(LIB_FOLDER)/%.o: $(LIB_FOLDER)/%.c
-	@mkdir -p $(OBJ_DIR)/$(LIB_FOLDER)
-	@$(CC) $(CFLAGS) $(INCLUDE_FOLDERS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 clean:
 	@/bin/rm -rf $(OBJ_DIR)
+	@make clean --no-print-directory -C $(libdir)
 	$(MSG2)
 
 fclean: clean
-	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(NAME) ${OBJ_DIR} $(LIBFT)
 	$(MSG3)
 
 re: fclean all
