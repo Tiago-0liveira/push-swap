@@ -3,7 +3,9 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g 
 
-SRC =	main.c
+SRC =	main.c \
+		stack.c \
+		utils.c
 
 includefolder = include
 libdir = libft

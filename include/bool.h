@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   bool.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 15:01:03 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/23 18:35:34 by tiagoliv         ###   ########.fr       */
+/*   Created: 2023/10/10 15:46:48 by tiagoliv          #+#    #+#             */
+/*   Updated: 2023/11/07 13:26:11 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef BOOL_H
+# define BOOL_H
 
-# include "libft.h"
-# include "utils.h"
-
-# define USAGE "usage: ./push_swap \"numbers\"\n"
-
-t_stack		*init_stack(void);
-void		check_args(int argc, char *argv[]);
-void		load_args(int argc, char *argv[], t_stack **stack);
+typedef enum _e_bool {
+	false,
+	true
+}	t_bool;
 
 #endif

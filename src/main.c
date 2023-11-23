@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:05:00 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/14 16:48:26 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:35:17 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,39 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stacks	*stacks;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-	check_args(argc, argv);
-	stacks = init_stacks();
-	if (!stacks)
+	if (argc < 2)
+	{
+		ft_putstr_fd(USAGE, STDERR);
+		return (EXIT_FAILURE);
+	}
+	stack_a = NULL;
+	stack_b = init_stack();
+	if (!stack_b)
 		return (EXIT_SUCCESS);
-	
-	
+	load_args(argc, argv, &stack_a);
+	print_stack(stack_a);
 }
 
-void	check_args(int argc, char *argv[])
+void	load_args(int argc, char *argv[], t_stack **stack)
 {
-	(void)argv;
-	if (argc != 2)
-	{
-		ft_printf(USAGE);
-		exit(EXIT_FAILURE);
-	}
-}
+	char	**ss;
+	int		i;
 
-t_stacks	*init_stacks(void)
-{
-	t_stacks	*stacks;
-
-	stacks = malloc(sizeof(t_stacks));
-	if (!stacks)
-		return (NULL);
-	stacks->a = init_stack();
-	if (!stacks->a)
+	if (argc == 2)
 	{
-		free(stacks);
-		return (NULL);
+		ss = ft_split(argv[1], ' ');
+		i = 0;
+		while (ss[i])
+			i++;
+		ft_str_arr_to_stack(ss, i, stack);
 	}
-	stacks->b = init_stack();
-	if (!stacks->b)
+	else
 	{
-		free(stacks->a);
-		free(stacks);
-		return (NULL);
+		ft_str_arr_to_stack(++argv, argc - 1, stack);
 	}
-	return (stacks);
 }
 
 t_stack	*init_stack(void)
@@ -64,6 +56,6 @@ t_stack	*init_stack(void)
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (NULL);
-	stack->node = NULL;
+	stack->next = NULL;
 	return (stack);
 }
