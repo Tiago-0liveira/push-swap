@@ -5,7 +5,14 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 SRC =	main.c \
 		stack.c \
-		utils.c
+		stack_ops.c \
+		stack_ops2.c \
+		stack_ops3.c \
+		sort.c \
+		sort_utils.c \
+		utils.c \
+		utils2.c \
+		prepare.c
 
 includefolder = include
 libdir = libft

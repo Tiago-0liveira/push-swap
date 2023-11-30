@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:54:59 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/23 18:28:12 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:12:37 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ t_stack	*ft_newlist(int val)
 		return (NULL);
 	stack->value = val;
 	stack->next = NULL;
+	stack->prev = NULL;
+	stack->target = NULL;
+	stack->cheapest = false;
 	return (stack);
 }
 
@@ -58,9 +61,12 @@ int	ft_stack_size(t_stack *stack)
 	if (!stack)
 		return (0);
 	tmp = stack;
-	r = 1;
-	while (stack->next)
+	r = 0;
+	while (tmp)
+	{
 		tmp = tmp->next;
+		r++;
+	}
 	return (r);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:05:00 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/23 18:35:17 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:12:49 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,21 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	stack_a = NULL;
-	stack_b = init_stack();
-	if (!stack_b)
-		return (EXIT_SUCCESS);
+	stack_b = NULL;
 	load_args(argc, argv, &stack_a);
-	print_stack(stack_a);
+	if (!is_sorted(stack_a))
+	{
+		//print_stack(stack_a);
+		if (ft_stack_size(stack_a) == 2)
+			sa(&stack_a, false);
+		else if (ft_stack_size(stack_a) == 3)
+			sort_size_3(&stack_a);
+		else
+			sort(&stack_a, &stack_b);
+	}
+	//print_stack(stack_a);
+	ft_free_stack(&stack_a);
+	return (EXIT_SUCCESS);
 }
 
 void	load_args(int argc, char *argv[], t_stack **stack)
@@ -42,20 +52,13 @@ void	load_args(int argc, char *argv[], t_stack **stack)
 		while (ss[i])
 			i++;
 		ft_str_arr_to_stack(ss, i, stack);
+		i = 0;
+		while (ss[i])
+			free(ss[i++]);
+		free(ss);
 	}
 	else
 	{
 		ft_str_arr_to_stack(++argv, argc - 1, stack);
 	}
-}
-
-t_stack	*init_stack(void)
-{
-	t_stack	*stack;
-
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-		return (NULL);
-	stack->next = NULL;
-	return (stack);
 }
