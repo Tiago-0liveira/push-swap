@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:08:13 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/30 17:20:00 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:40:12 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,28 @@ void	sort_size_3(t_stack **a)
 		sa(a, false);
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);
+}
+
+void	sort_size_5(t_stack **a, t_stack **b)
+{
+	int a_len;
+	t_stack *biggest;
+
+	a_len = ft_stack_size(*a);
+	if (a_len-- > 2 && !is_sorted(*a))
+		pb(b, a, false);
+	if (a_len-- > 2 && !is_sorted(*a))
+		pb(b, a, false);
+	if (a_len-- > 1 && !is_sorted(*a))
+		pb(b, a, false);
+	sort_size_3(b);
+	biggest = find_biggest(*a);
+	if (*a != biggest)
+		ra(a, false);
+	
+	print_stack(*a);
+	print_stack(*b);
+	
 }
 
 void	sort(t_stack **a, t_stack **b)

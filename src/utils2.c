@@ -47,7 +47,7 @@ bool	stack_has_int(t_stack *stack, int ltmp)
 
 void	error_and_exit(char *error, t_stack *a)
 {
-	ft_putstr_fd(error, 2);
+	ft_putstr_fd(error, STDERR);
 	ft_free_stack(&a);
 	exit(1);
 }

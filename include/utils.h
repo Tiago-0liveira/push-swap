@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:49:51 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/30 17:17:01 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:24:38 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
 // sort.c
 bool	is_sorted(t_stack *stack);
 void	sort_size_3(t_stack **a);
+void	sort_size_5(t_stack **a, t_stack **b);
 void	sort(t_stack **a, t_stack **b);
 
 // sort_utils.c
