@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:46:23 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/30 17:04:32 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:57:41 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	print_stack(t_stack *stack)
 		ft_printf("%d ", stack->value);
 		stack = stack->next;
 	}
-
 	ft_printf("|\n");
 }
 

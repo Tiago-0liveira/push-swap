@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:05:00 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/30 18:12:49 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:57:28 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int argc, char *argv[])
 	load_args(argc, argv, &stack_a);
 	if (!is_sorted(stack_a))
 	{
-		//print_stack(stack_a);
 		if (ft_stack_size(stack_a) == 2)
 			sa(&stack_a, false);
 		else if (ft_stack_size(stack_a) == 3)
@@ -35,7 +34,6 @@ int	main(int argc, char *argv[])
 		else
 			sort(&stack_a, &stack_b);
 	}
-	//print_stack(stack_a);
 	ft_free_stack(&stack_a);
 	return (EXIT_SUCCESS);
 }
