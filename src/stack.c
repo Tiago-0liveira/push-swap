@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:54:59 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/12/04 14:56:18 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:29:02 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,13 @@ void	ft_add_back(t_stack **stack, t_stack *nw)
 int	ft_stack_size(t_stack *stack)
 {
 	int		r;
-	t_stack	*tmp;
 
 	if (!stack)
 		return (0);
-	tmp = stack;
 	r = 0;
-	while (tmp)
+	while (stack)
 	{
-		tmp = tmp->next;
+		stack = stack->next;
 		r++;
 	}
 	return (r);

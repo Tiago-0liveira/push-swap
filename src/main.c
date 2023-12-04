@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:05:00 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/12/04 16:36:50 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:55:03 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ int	main(int argc, char *argv[])
 			sa(&stack_a, false);
 		else if (ft_stack_size(stack_a) == 3)
 			sort_size_3(&stack_a);
-		else if (ft_stack_size(stack_a) > 3 && ft_stack_size(stack_a) <= 5)
-			sort_size_5(&stack_a, &stack_b);
 		else
 			sort(&stack_a, &stack_b);
 	}
-	//print_stack(stack_a);
 	ft_free_stack(&stack_a);
 	return (EXIT_SUCCESS);
 }

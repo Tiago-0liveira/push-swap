@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:49:51 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/12/04 16:24:38 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:26:58 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	rrb(t_stack **b, bool print);
 
 // stack_ops3.c
 void	rrr(t_stack **a, t_stack **b);
-void	rev_rotate(t_stack **stack);
 void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
 void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
 

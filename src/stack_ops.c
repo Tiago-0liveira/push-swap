@@ -6,7 +6,7 @@
 /*   By: tiagoliv <tiagoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:49:44 by tiagoliv          #+#    #+#             */
-/*   Updated: 2023/11/30 17:17:40 by tiagoliv         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:52:15 by tiagoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,27 +75,27 @@ void	pa(t_stack **a, t_stack **b, bool print)
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack **b, t_stack **a, bool print)
+void	pb(t_stack **a, t_stack **b, bool print)
 {
 	t_stack	*push_node;
 
-	if (!*a)
-		return ;
-	push_node = *a;
-	*a = (*a)->next;
-	if (*a)
-		(*a)->prev = NULL;
-	push_node->prev = NULL;
 	if (!*b)
+		return ;
+	push_node = *b;
+	*b = (*b)->next;
+	if (*b)
+		(*b)->prev = NULL;
+	push_node->prev = NULL;
+	if (!*a)
 	{
-		*b = push_node;
+		*a = push_node;
 		push_node->next = NULL;
 	}
 	else
 	{
-		push_node->next = *b;
+		push_node->next = *a;
 		push_node->next->prev = push_node;
-		*b = push_node;
+		*a = push_node;
 	}
 	if (!print)
 		ft_printf("pb\n");

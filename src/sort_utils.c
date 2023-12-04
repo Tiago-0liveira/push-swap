@@ -27,12 +27,12 @@ void	current_index(t_stack *stack)
 	while (stack)
 	{
 		stack->index = i;
-		if (i < median)
+		if (i <= median)
 			stack->above_median = true;
 		else
 			stack->above_median = false;
 		stack = stack->next;
-		i++;
+		++i;
 	}
 }
 
@@ -83,11 +83,11 @@ void	calculate_push_cost(t_stack *a, t_stack *b)
 	{
 		a->push_cost = a->index;
 		if (!(a->above_median))
-			a->push_cost = len_a - a->index;
+			a->push_cost = len_a - (a->index);
 		if (a->target->above_median)
 			a->push_cost += a->target->index;
 		else
-			a->push_cost += len_b - a->target->index;
+			a->push_cost += len_b - (a->target->index);
 		a = a->next;
 	}
 }
